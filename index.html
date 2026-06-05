@@ -7,7 +7,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#141414;color:#fff;overflow-x:hidden}
- 
+
 #splash{
 position:fixed;inset:0;background:#000;
 display:flex;justify-content:center;align-items:center;
@@ -23,7 +23,7 @@ animation:zoom 3s forwards;
 from{opacity:0;transform:scale(.3)}
 to{opacity:1;transform:scale(1)}
 }
- 
+
 #profiles{
 display:none;
 min-height:100vh;
@@ -32,48 +32,48 @@ align-items:center;
 flex-direction:column;
 padding:40px;
 }
- 
+
 .title{
 font-size:4rem;
 margin-bottom:50px;
 }
- 
+
 .cards{
 display:flex;
 gap:30px;
 flex-wrap:wrap;
 justify-content:center;
 }
- 
+
 .card{
 width:260px;
 cursor:pointer;
 transition:.35s;
 }
- 
+
 .card:hover{
 transform:scale(1.12);
 }
- 
+
 .card img{
 width:100%;
 height:360px;
 object-fit:cover;
 border-radius:10px;
 }
- 
+
 .label{
 text-align:center;
 margin-top:12px;
 font-size:1.6rem;
 }
- 
+
 #home{
 display:none;
 padding-top:80px;
 min-height:100vh;
 }
- 
+
 .nav{
 position:fixed;
 top:0;
@@ -82,61 +82,61 @@ padding:20px 40px;
 background:linear-gradient(#000,transparent);
 z-index:100;
 }
- 
+
 .netflix{
 color:#E8C4C4;
 font-size:2rem;
 font-weight:bold;
 }
 .hero{
-    height:75vh;
-    position:relative;
-    overflow:hidden;
+    height:75vh;
+    position:relative;
+    overflow:hidden;
 }
- 
+
 .hero img{
-    width:100%;
-    height:auto;
-    display:block;
+    width:100%;
+    height:auto;
+    display:block;
 }
 .overlay{
 position:absolute;
 inset:0;
 background:linear-gradient(to top,#141414,transparent);
 }
- 
+
 .heroText{
-    position:absolute;
-    bottom:40px;
-    left:50px;
+    position:absolute;
+    bottom:40px;
+    left:50px;
 }
- 
+
 .heroText h1{
 font-size:4rem;
 }
- 
+
 .back{
 margin-top:15px;
 padding:12px 20px;
 cursor:pointer;
 border:none;
 }
- 
+
 .row{
 padding:30px;
 }
- 
+
 .row h2{
 margin-bottom:15px;
 }
- 
+
 .slider{
 display:flex;
 gap:12px;
 overflow-x:auto;
 padding-bottom:15px;
 }
- 
+
 .thumb{
 min-width:220px;
 height:320px;
@@ -145,18 +145,18 @@ border-radius:8px;
 cursor:pointer;
 transition:.3s;
 }
- 
+
 .thumb:hover{
 transform:scale(1.08);
 }
- 
+
 .thumb img{
 width:100%;
 height:100%;
 object-fit:cover;
 object-position:center top;
 }
- 
+
 #imageModal{
 display:none;
 position:fixed;
@@ -166,13 +166,13 @@ justify-content:center;
 align-items:center;
 z-index:10000;
 }
- 
+
 #imageModal img{
 max-width:90%;
 max-height:90%;
 border-radius:10px;
 }
- 
+
 .close{
 position:absolute;
 top:20px;
@@ -183,33 +183,33 @@ cursor:pointer;
 </style>
 </head>
 <body>
- 
+
 <div id="splash"><div class="logo">Forever Begins</div></div>
- 
+
 <div id="profiles">
 <div class="title">Our Wedding Journey</div>
- 
+
 <div class="cards">
 <div class="card" onclick="openEvent('Sangeet', this.querySelector('img').src)">
 <img src="https://res.cloudinary.com/dqp3suzn2/image/upload/v1780637162/s1_qwcnlo.png">
 <div class="label">Sangeet</div>
 </div>
- 
+
 <div class="card" onclick="openEvent('Haldi', this.querySelector('img').src)">
 <img src="https://res.cloudinary.com/dqp3suzn2/image/upload/v1780636720/h1_qkf7fa.png">
 <div class="label">Haldi</div>
 </div>
- 
+
 <div class="card" onclick="openEvent('Wedding', this.querySelector('img').src)">
 <img src="https://res.cloudinary.com/dqp3suzn2/image/upload/v1780637361/w3_n74p38.png">
 <div class="label">Wedding</div>
 </div>
 </div>
 </div>
- 
+
 <div id="home">
 <div class="nav"><div class="netflix">Forever Begins</div></div>
- 
+
 <div class="hero">
 <img id="heroImage" src="">
 <div class="overlay"></div>
@@ -218,18 +218,18 @@ cursor:pointer;
 <button class="back" onclick="goBack()">← Back</button>
 </div>
 </div>
- 
+
 <div class="row">
 <h2>Gallery</h2>
 <div class="slider" id="gallerySlider"></div>
 </div>
 </div>
- 
+
 <div id="imageModal" onclick="closeImage()">
 <span class="close">✖</span>
 <img id="modalImg">
 </div>
- 
+
 <script>
 const galleries={
 "Sangeet":[
@@ -258,12 +258,12 @@ const galleries={
 "https://res.cloudinary.com/dqp3suzn2/image/upload/v1780636714/w8_uae8rs.png"
 ]
 };
- 
+
 setTimeout(()=>{
 document.getElementById('splash').style.display='none';
 document.getElementById('profiles').style.display='flex';
 },3000);
- 
+
 function openEvent(month,img){
 document.getElementById('profiles').style.display='none';
 document.getElementById('home').style.display='block';
@@ -271,7 +271,7 @@ document.getElementById('eventTitle').innerText=month;
 document.getElementById('heroImage').src=img;
 loadGallery(month);
 }
- 
+
 function loadGallery(month){
 const slider=document.getElementById('gallerySlider');
 slider.innerHTML='';
@@ -279,17 +279,17 @@ galleries[month].forEach(photo=>{
 slider.innerHTML+=`<div class="thumb"><img src="${photo}" onclick="showImage(this.src)"></div>`;
 });
 }
- 
+
 function goBack(){
 document.getElementById('home').style.display='none';
 document.getElementById('profiles').style.display='flex';
 }
- 
+
 function showImage(src){
 document.getElementById('modalImg').src=src;
 document.getElementById('imageModal').style.display='flex';
 }
- 
+
 function closeImage(){
 document.getElementById('imageModal').style.display='none';
 }
